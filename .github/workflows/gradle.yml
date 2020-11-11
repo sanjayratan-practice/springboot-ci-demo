@@ -25,6 +25,12 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
+    - name: Copy boot jar to docker location
+      run: cp -f build/libs/springboot-ci-demo-0.0.1-SNAPSHOT.jar docker-related
+      
+    - name: Move to docker-related folder
+      run: cd docker-related
+      
     - name: Preparing docker image
-      run: docker build -t build/libs/spring-boot-test-project:spring-boot-test-project_v1.0 ./docker-related
+      run: docker build -t springboot-ci-demo-0.0.1-SNAPSHOT.jar:spring-boot-test-project_v1.0 .
       
