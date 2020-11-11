@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 /**
- * This is a spring boot init class.
+ * This is a spring boot init class-new.
  * @author SANJ
  */
 @SpringBootApplication
