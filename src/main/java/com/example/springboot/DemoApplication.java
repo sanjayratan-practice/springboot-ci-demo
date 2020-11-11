@@ -8,6 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * This is a spring boot init class.
+ * @author SANJ
+ */
 @SpringBootApplication
 public class DemoApplication {
 
