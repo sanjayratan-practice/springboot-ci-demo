@@ -28,5 +28,10 @@ jobs:
           java-version: 1.8
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+      
       - name: Docker build with Gradle
-        run: docker build ./gradlew springboot-ci-demo:0.0.1
+        run: ./gradlew build
+        
+      - name: Prepare docker image
+        run: docker build -t ./build/spring-boot-test-project:spring-boot-test-project_v1.0 /home/runner/work/springboot-ci-demo/docker-related
+        
