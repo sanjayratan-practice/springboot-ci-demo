@@ -15,7 +15,10 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -29,11 +32,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       
-      - name: Docker build with Gradle
+      - name: Build Java with Gradle
         run: ./gradlew build
         
       #- name: Copy boot jar to docker folder
        # run: cp ./build/libs/springboot-ci-demo-0.0.1-snapshot.jar ./docker-related
       
-      - name: Prepare docker image
-        run: docker build -t ./build/libs/springboot-ci-demo-0.0.1-snapshot.jar:spring-boot-test-project_v1.0 /home/runner/work/springboot-ci-demo/docker-related
+     # - name: Prepare docker image
+      #  run: docker build -t ./build/libs/springboot-ci-demo-0.0.1-snapshot.jar:spring-boot-test-project_v1.0 /home/runner/work/springboot-ci-demo/docker-related
