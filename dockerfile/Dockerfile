@@ -1,7 +1,7 @@
 FROM centos
 ARG SAG_HOME
 ENV ADMIN_USER=admin
-ENV SAG_HOME=${SAG_HOME:/opt/softwareag}
+ENV SAG_HOME=${SAG_HOME:-/opt/softwareag}
 
 RUN yum -y update \
     && yum install  -y java-1.8.0-openjdk 
