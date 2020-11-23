@@ -1,4 +1,5 @@
-FROM centos
+ARG OS_IMAGE=centos
+FROM $OS_IMAGE
 ARG SAG_HOME
 ENV ADMIN_USER=admin
 ENV SAG_HOME=${SAG_HOME:-/opt/softwareag}
