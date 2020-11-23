@@ -1,7 +1,5 @@
-ARG OS_IMAGE
-FROM $OS_IMAGE
+FROM centos
 ARG SAG_HOME
-ENV OS_IMAGE=${OS_IMAGE:centos}
 ENV ADMIN_USER=admin
 ENV SAG_HOME=${SAG_HOME:/opt/softwareag}
 
