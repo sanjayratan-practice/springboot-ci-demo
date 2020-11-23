@@ -1,0 +1,15 @@
+{
+  "auth-server-url": "https://idm-aw-us.softwareag-stage.cloud/auth",
+  "ssl-required": "external",
+  "resource": "cloudcontainer",
+  "credentials": {
+    "secret": "a6111rr5-7ba4-2463-0f3c-b123rf234er6"
+  },
+  "public-client": false,
+  "use-resource-role-mappings": true,
+  "cors-allowed-methods": "GET, HEAD, OPTIONS, PUT, DELETE",
+  "cors-allowed-headers": "Origin, Accept, X-Requested-With, Content-Type,Access-Control-Request-Method, Access-Control-Request-Headers , Sag-Idm-Tenant-Context",
+  "confidential-port": 0
+
+}
+
