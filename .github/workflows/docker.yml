@@ -38,4 +38,11 @@ jobs:
         uses: docker/setup-buildx-action@v1
       
       - name: Build Docker Image
-        run: docker build -o ./dockerfile . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0         
+        run: docker build -o ./dockerfile . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
+      
+      - name: Upoading the artifact (~Image)
+        uses: actions/upload-artifact@v2
+        with:
+          name: aa-docker-image
+          path: ./dockerfile/**
+          
