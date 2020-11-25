@@ -47,7 +47,7 @@ jobs:
           tags: springboot-ci-demo_v1.0
       
       - name: Upoading the artifact (~Image)
-      - uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: aa-docker-image
           path: ./dockerfile/**
