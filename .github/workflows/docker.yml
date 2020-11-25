@@ -35,6 +35,12 @@ jobs:
       - name: Absolute path of the current dir
         run: pwd
         
+      - name: Create a file1 under dockerfile
+        run: echo "This is a test file - 1" > ./dockerfile/testfile1.txt
+        
+      - name: Create a file2 under dockerfile
+        run: echo "This is a test file - 2" > /home/runner/work/springboot-ci-demo/springboot-ci-demo/dockerfile/testfile2.txt
+        
       - name: Build Docker Image
         run: docker build -o type=local,dest=./dockerfile . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
       
