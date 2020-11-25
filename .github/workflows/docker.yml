@@ -42,7 +42,7 @@ jobs:
         run: docker build . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
       
       - name: Run Docker Image
-        run: docker run --detach springboot-ci-demo_v1.0
+        run: docker run --detach objective_wilbur
         
       - name: List Docker Images
         run: docker ps
