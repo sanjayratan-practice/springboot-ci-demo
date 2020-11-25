@@ -38,11 +38,11 @@ jobs:
       - name: Creating a file under output dir
         run: echo "This is a test file - 1" > ./output/test-file1.txt
         
-      - name: Build and Run Docker Image
-        run: docker build . --file ./dockerfile/Dockerfile -t springboot_ci_demo && docker run -it springboot_ci_demo
+      - name: Build Docker Image
+        run: docker build . --file ./dockerfile/Dockerfile -t springboot_ci_demo
       
-      #- name: Run Docker Image
-      #  run: docker run --detach springboot-ci-demo_v1.0
+      - name: Run Docker Image
+        run: docker run --detach springboot_ci_demo
         
       - name: List Docker Images
         run: docker ps --format "{{.ID}}"
