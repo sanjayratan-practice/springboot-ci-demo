@@ -45,7 +45,7 @@ jobs:
         run: docker run --detach springboot-ci-demo_v1.0
         
       - name: List Docker Images
-        run: docker ps
+        run: docker ps --format "{{.ID}} - {{.NAMES}}"
         
       - name: Exporting the image as tar file
         run: docker export objective_wilbur > ./output/springboot-ci-demo_v1.0.tar
