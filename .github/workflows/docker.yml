@@ -31,25 +31,19 @@ jobs:
       
       - name: Build Java with Gradle
         run: ./gradlew build
-        
-      - name: Absolute path of the current dir
-        run: pwd
-        
-      - name: Create a file1 under dockerfile
-        run: echo "This is a test file - 1" > ./dockerfile/testfile1.txt
-        
-      - name: Create a file2 under dockerfile
-        run: echo "This is a test file - 2" > /home/runner/work/springboot-ci-demo/springboot-ci-demo/dockerfile/testfile2.txt
-        
+                
       - name: Build Docker Image
-        run: docker build -o - . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0 > out.tar
+        run: docker build -o type=tar,dest=./dockerfile/docker-image.tar . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
       
+      - name: List all the files under dockerfile dir-1
+        run: ls dockerfile
+        
       - name: Upoading the artifact (~Image)
         uses: actions/upload-artifact@v2
         with:
-          name: aa-docker-image_v1.0
-          path: out.tar
+          name: aa-docker-image_v2.0
+          path: ./dockerfile/docker-image.tar
           
-      - name: List all the files under dockerfile dir
+      - name: List all the files under dockerfile dir-2
         run: ls dockerfile
       
