@@ -16,9 +16,9 @@ EXPOSE 8284
 USER $ADMIN_USER
 
 WORKDIR $SAG_HOME
-ADD --chown=$ADMIN_USER:$ADMIN_USER  ./build/libs/*.jar $SAG_HOME/agileapps-boot.jar
-COPY --chown=$ADMIN_USER:$ADMIN_USER  /uitemplates $SAG_HOME/uitemplates
-COPY --chown=$ADMIN_USER:$ADMIN_USER /config $SAG_HOME/config
+ADD --chown=admin:admin  ./build/libs/*.jar $SAG_HOME/agileapps-boot.jar
+COPY --chown=admin:admin  /uitemplates $SAG_HOME/uitemplates
+# COPY --chown=$ADMIN_USER:$ADMIN_USER /config $SAG_HOME/config
 
 ENTRYPOINT ["java", "-jar","agileapps-boot.jar"]
 
