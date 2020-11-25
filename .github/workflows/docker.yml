@@ -33,14 +33,14 @@ jobs:
         run: ./gradlew build
         
       - name: Build Docker Image
-        run: docker build -o type=local,dest=./dockerfile . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
+        run: docker build -o type=local,dest=dockerfile . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
       
       - name: Upoading the artifact (~Image)
         uses: actions/upload-artifact@v2
         with:
           name: aa-docker-image
-          path: ./dockerfile/**
+          path: dockerfile
           
       - name: List all the files under dockerfile dir
-        run: ls ./dockerfile
+        run: ls dockerfile
       
