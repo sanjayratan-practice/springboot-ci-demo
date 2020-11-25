@@ -32,6 +32,9 @@ jobs:
       - name: Build Java with Gradle
         run: ./gradlew build
         
+      - name: Absolute path of the current dir
+        run: pwd
+        
       - name: Build Docker Image
         run: docker build -o type=local,dest=dockerfile . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
       
