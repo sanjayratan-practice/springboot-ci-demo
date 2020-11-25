@@ -33,7 +33,7 @@ jobs:
         run: ./gradlew build
                 
       - name: Build Docker Image
-        run: docker build -o - . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0 > ./dockerfile/docker-image.tar
+        run: docker build -o out . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
       
       - name: List all the files under dockerfile dir-1
         run: ls dockerfile
@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: aa-docker-image_v2.0
-          path: ./dockerfile/docker-image.tar
+          path: ./out
           
       - name: List all the files under dockerfile dir-2
         run: ls dockerfile
