@@ -41,8 +41,14 @@ jobs:
       - name: Build Docker Image
         run: docker build . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
       
-      - name: Exporting the image as tar file
-        run: docker export springboot-ci-demo_v1.0 > ./output/springboot-ci-demo_v1.0.tar
+      - name: Run Docker Image
+        run: docker run --detach springboot-ci-demo_v1.0
+        
+      - name: List Docker Images
+        run: docker ls
+        
+      #- name: Exporting the image as tar file
+       # run: docker export springboot-ci-demo_v1.0 > ./output/springboot-ci-demo_v1.0.tar
         
       - name: List all the files under output dir-1
         run: ls output
