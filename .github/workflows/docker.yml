@@ -31,19 +31,25 @@ jobs:
       
       - name: Build Java with Gradle
         run: ./gradlew build
-                
+     
+      - name: Creating output dir
+        run: mkdir output
+        
+      - name: Creating a file under output dir
+        run: echo "This is a test file - 1" > ./output/test-file1.txt
+        
       - name: Build Docker Image
-        run: docker build -o out . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
+        run: docker build -o output . --file ./dockerfile/Dockerfile --tag springboot-ci-demo_v1.0
       
-      - name: List all the files under dockerfile dir-1
-        run: ls dockerfile
+      - name: List all the files under output dir-1
+        run: ls output
         
       - name: Upoading the artifact (~Image)
         uses: actions/upload-artifact@v2
         with:
-          name: aa-docker-image_v2.0
-          path: ./out
+          name: aa-docker-image_v3.0
+          path: ./output
           
-      - name: List all the files under dockerfile dir-2
-        run: ls dockerfile
+      - name: List all the files under output dir-2
+        run: ls output
       
