@@ -33,7 +33,7 @@ jobs:
         run: ./gradlew build
      
       - name: Create output directory for docker image
-        run: mkdirrr output
+        run: mkdir output
        
       - name: Build Docker Image
         if: success()
