@@ -39,16 +39,10 @@ jobs:
         if: success()
         run: |
           mkdir output
-          docker build . --file ./dockerfile/Dockerfile -t springboot_ci_demo
+          docker build --build-arg AA_VERSION=v1.0.RELEASE --build-arg OS_IMAGE=ubuntu . --file ./dockerfile/Dockerfile -t springboot_ci_demo
           docker run --detach springboot_ci_demo
           docker export $(docker ps --format "{{.ID}}") > ./output/springboot_ci_demo6.tar
-          
-      #- name: Run Docker Image
-       # run: docker run --detach springboot_ci_demo
-      
-     # - name: Exporting the image as tar file
-     #   run: docker export $(docker ps --format "{{.ID}}") > ./output/springboot_ci_demo.tar
-        
+       
       - name: List all the files under output dir-1
         run: ls output
         
