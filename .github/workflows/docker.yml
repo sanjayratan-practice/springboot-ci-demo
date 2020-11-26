@@ -32,24 +32,35 @@ jobs:
       - name: Build Java with Gradle
         run: ./gradlew build
      
-      - name: Build Docker Image
-        if: success()
-        run: |
-          mkdir output
-          docker build --build-arg AA_VERSION=v1.0.RELEASE --build-arg OS_IMAGE=centos . --file ./dockerfile/Dockerfile -t springboot_ci_demo
-          docker run --detach springboot_ci_demo
-          docker export $(docker ps --format "{{.ID}}") > ./output/springboot_ci_demo6.tar
-       
-      - name: List all the files under output dir-1
-        run: ls output
-        
-      - name: Upoading the artifact (~Image)
-        if: success()
-        uses: actions/upload-artifact@v2
+      - name: Build and Push Docker Image
+        id: docker_build
+        uses: docker/build-push-action@v2
         with:
-          name: aa-docker-image_v6.0
-          path: ./output
+          context: .
+          file: ./dockerfile/Dockerfile
+          push: true
+          tags: docker.pkg.github.com/sanjayratan-practice/springboot-ci-demo/springboot_ci_demo_v1.0:latest
+          build-args: |
+            AA _VERSION=v1.0.RELEASE
+            OS_IMAGE=centos
+    
+      #- name: Build Docker Image
+       # if: success()
+        #run: |
+         # mkdir output
+          #docker build --build-arg AA_VERSION=v1.0.RELEASE --build-arg OS_IMAGE=centos . --file ./dockerfile/Dockerfile -t springboot_ci_demo
+          #docker run --detach springboot_ci_demo
+          #docker export $(docker ps --format "{{.ID}}") > ./output/springboot_ci_demo6.tar
+       
+      #- name: List all the files under output dir-1
+       # run: ls output
+        
+      #- name: Upoading the artifact (~Image)
+       # if: success()
+        #uses: actions/upload-artifact@v2
+        #with:
+         # name: aa-docker-image_v6.0
+          #path: ./output
           
-      - name: List all the files under output dir-2
-        run: ls output
-      
+      #- name: List all the files under output dir-2
+       # run: ls output
