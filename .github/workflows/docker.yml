@@ -36,6 +36,7 @@ jobs:
      #   run: mkdir output
        
       - name: Build Docker Image
+        if: success()
         run: |
           mkdir output
           docker build . --file ./dockerfile/Dockerfile -t springboot_ci_demo
@@ -52,6 +53,7 @@ jobs:
         run: ls output
         
       - name: Upoading the artifact (~Image)
+        if: success()
         uses: actions/upload-artifact@v2
         with:
           name: aa-docker-image_v6.0
