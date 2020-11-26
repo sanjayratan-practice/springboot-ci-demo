@@ -46,7 +46,7 @@ jobs:
           username: ${{secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
           push: true
-          tags: docker.pkg.github.com/sanjayratan-practice/springboot-ci-demo/springboot_ci_demo_v1.0:latest
+          tags: sanjayk2020/springboot-ci-demo:latest123
           build-args: |
             AA _VERSION=v1.0.RELEASE
             OS_IMAGE=centos
