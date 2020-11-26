@@ -12,16 +12,16 @@ RUN yum -y update \
     && yum install  -y java-1.8.0-openjdk 
 
 RUN  set -x \
-      && groupadd -r 215385 \
-      && useradd -r -g 215385 -m -d $SAG_HOME -s /bin/bash 215385
+      && groupadd -r ug215385 \
+      && useradd -r -g ug215385 -m -d $SAG_HOME -s /bin/bash ug215385
 
 EXPOSE 80
 
-USER 215385
+USER ug215385
 
 WORKDIR $SAG_HOME
-ADD --chown=215385:215385  ./build/libs/*.jar $SAG_HOME/agileapps-boot_$AA_VERSION.jar
-COPY --chown=215385:215385  /uitemplates $SAG_HOME/uitemplates
+ADD --chown=ug215385:ug215385  ./build/libs/*.jar $SAG_HOME/agileapps-boot_$AA_VERSION.jar
+COPY --chown=ug215385:ug215385  /uitemplates $SAG_HOME/uitemplates
 
 ENTRYPOINT ["java", "-jar","agileapps-boot_$AA_VERSION.jar"]
 
