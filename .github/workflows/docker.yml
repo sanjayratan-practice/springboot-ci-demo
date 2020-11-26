@@ -43,8 +43,8 @@ jobs:
         with:
           context: .
           file: ./dockerfile/Dockerfile
-          username: ${{DOCKER_USERNAME}}
-          password: ${{DOCKER_PASSWORD}}
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_PASSWORD}}
           push: true
           tags: docker.pkg.github.com/sanjayratan-practice/springboot-ci-demo/springboot_ci_demo_v1.0:latest
           build-args: |
