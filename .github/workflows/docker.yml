@@ -32,8 +32,8 @@ jobs:
       - name: Build Java with Gradle
         run: ./gradlew build
      
-      #- name: Create output directory for docker image
-     #   run: mkdir output
+      - name: Create output directory for docker image
+        run: mkdirrr output
        
       - name: Build Docker Image
         if: success()
