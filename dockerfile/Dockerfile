@@ -20,8 +20,8 @@ EXPOSE 80
 USER ug215385
 
 WORKDIR $SAG_HOME
-ADD --chown=ug215385:ug215385  ./build/libs/*.jar $SAG_HOME/agileapps-boot_$AA_VERSION.jar
+ADD --chown=ug215385:ug215385  ./build/libs/*.jar $SAG_HOME/agileapps-boot.jar
 COPY --chown=ug215385:ug215385  /uitemplates $SAG_HOME/uitemplates
 
-ENTRYPOINT ["java", "-jar","agileapps-boot_$AA_VERSION.jar"]
+ENTRYPOINT ["java", "-jar","agileapps-boot.jar"]
 
