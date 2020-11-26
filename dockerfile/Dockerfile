@@ -4,8 +4,9 @@ ARG SAG_HOME
 ARG AA_VERSION=1.0
 ENV SAG_HOME=${SAG_HOME:-/opt/softwareag}
 
-RUN echo "The OS image is - $OS_IMAGE"
-RUN echo "The AA version is - $OS_IMAGE"
+RUN echo "The OS image is $OS_IMAGE"
+
+RUN echo "The AA version is $AA_VERSION"
 
 RUN yum -y update \
     && yum install  -y java-1.8.0-openjdk 
