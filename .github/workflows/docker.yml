@@ -32,23 +32,21 @@ jobs:
       - name: Build Java with Gradle
         run: ./gradlew build
      
-      - name: Creating output dir
-        run: mkdir output
-        
-      - name: Creating a file under output dir
-        run: echo "This is a test file - 1" > ./output/test-file1.txt
-        
+      #- name: Create output directory for docker image
+     #   run: mkdir output
+       
       - name: Build Docker Image
-        run: docker build . --file ./dockerfile/Dockerfile -t springboot_ci_demo
+        run: |
+          mkdir output
+          docker build . --file ./dockerfile/Dockerfile -t springboot_ci_demo
+          docker run --detach springboot_ci_demo
+          docker export $(docker ps --format "{{.ID}}") > ./output/springboot_ci_demo6.tar
+          
+      #- name: Run Docker Image
+       # run: docker run --detach springboot_ci_demo
       
-      - name: Run Docker Image
-        run: docker run --detach springboot_ci_demo
-        
-      - name: List Docker Images
-        run: docker ps --format "{{.ID}}"
-        
-      - name: Exporting the image as tar file
-        run: docker export $(docker ps --format "{{.ID}}") > ./output/springboot_ci_demo.tar
+     # - name: Exporting the image as tar file
+     #   run: docker export $(docker ps --format "{{.ID}}") > ./output/springboot_ci_demo.tar
         
       - name: List all the files under output dir-1
         run: ls output
@@ -56,7 +54,7 @@ jobs:
       - name: Upoading the artifact (~Image)
         uses: actions/upload-artifact@v2
         with:
-          name: aa-docker-image_v5.0
+          name: aa-docker-image_v6.0
           path: ./output
           
       - name: List all the files under output dir-2
