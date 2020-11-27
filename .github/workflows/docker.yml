@@ -43,13 +43,11 @@ jobs:
         with:
           context: .
           file: ./dockerfile/Dockerfile
-          username: ${{secrets.DOCKER_USERNAME}}
-          password: ${{secrets.DOCKER_PASSWORD}}
-          push: true
-          tags: sanjayk2020/springboot-ci-demo:latest123
-          build-args: |
-            AA _VERSION=v1.0.RELEASE
-            OS_IMAGE=centos
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: sanjayratan-practice/springboot-ci-demo/springboot_ci_demo-v2711
+          
     
       #- name: Build Docker Image
        # if: success()
