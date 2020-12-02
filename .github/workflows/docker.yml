@@ -43,8 +43,8 @@ jobs:
         with:
           context: .
           file: ./dockerfile/Dockerfile
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.REPO_USERNAME }}
+          password: ${{ secrets.REPO_TOKEN }}
           registry: docker.pkg.github.com
           repository: sanjayratan-practice/springboot-ci-demo/springboot_ci_demo-v2711
           
